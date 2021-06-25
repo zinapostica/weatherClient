@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.IOException;
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
 public class JsonDataMapperServiceImpl implements JsonDataMapperService{
@@ -20,5 +19,9 @@ public class JsonDataMapperServiceImpl implements JsonDataMapperService{
         JsonNode rootNode = objectMapper.readTree(json);
         WeatherData weatherData = objectMapper.readValue(rootNode.get("main").toString(), WeatherData.class);
         return weatherData;
+    }
+
+    public JsonDataMapperServiceImpl() {
+        this.objectMapper = new ObjectMapper();
     }
 }
