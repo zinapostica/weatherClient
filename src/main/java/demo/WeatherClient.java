@@ -16,7 +16,7 @@ public class WeatherClient {
         WeatherServiceInjector weatherServiceInjector = new WeatherServiceInjectorImpl();
         JsonDataMapperInjector jsonDataMapperInjector = new JsonDataMapperInjectorImpl();
         WeatherServiceConsumer consumer = new WeatherServiceConsumer(
-                weatherServiceInjector.getWeatherService("Detroit", "your token",
+                weatherServiceInjector.getWeatherService("Detroit", "yourtoken",
                         jsonDataMapperInjector.getJsonDataMapperService()));
         consumer.getWeatherByCityName();
     }
