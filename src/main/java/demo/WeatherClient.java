@@ -13,7 +13,7 @@ public class WeatherClient {
 
     public static void main(String[] args)  {
         WeatherServiceConsumer consumer = new WeatherServiceConsumer(WeatherServiceImpl
-                .getNewServiceInstance("Detroit","4e7ed5953d55b45bcfd4db029370afaf"));
+                .getNewServiceInstance("Detroit","yourtoken"));
         consumer.getWeatherByCityName();
     }
 }
