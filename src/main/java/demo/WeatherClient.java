@@ -14,6 +14,7 @@ public class WeatherClient {
     public static void main(String[] args)  {
         WeatherServiceConsumer consumer = new WeatherServiceConsumer(WeatherServiceImpl
                 .getNewServiceInstance("Detroit","yourtoken"));
+
         consumer.getWeatherByCityName();
     }
 }
