@@ -18,9 +18,13 @@ public class WeatherServiceConsumer {
     private WeatherService weatherService;
 
 
-    public void getWeatherByCityName() throws IOException, InterruptedException {
-        WeatherData weatherData = weatherService.getCityWeather();
-        if (weatherData != null)
-            System.out.println(weatherData);
+    public void getWeatherByCityName(){
+        try{
+            WeatherData weatherData = weatherService.getCityWeather();
+            if (weatherData != null)
+                System.out.println(weatherData);
+        }catch (IOException| InterruptedException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

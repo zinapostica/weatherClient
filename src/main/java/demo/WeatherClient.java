@@ -1,10 +1,9 @@
 package demo;
 
 import demo.consumers.WeatherServiceConsumer;
-import demo.injectors.JsonDataMapperInjector;
-import demo.injectors.JsonDataMapperInjectorImpl;
-import demo.injectors.WeatherServiceInjector;
-import demo.injectors.WeatherServiceInjectorImpl;
+import demo.models.WeatherData;
+import demo.services.JsonDataMapperService;
+import demo.services.JsonDataMapperServiceImpl;
 import demo.services.WeatherService;
 import demo.services.WeatherServiceImpl;
 
@@ -12,12 +11,9 @@ import java.io.IOException;
 
 public class WeatherClient {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        WeatherServiceInjector weatherServiceInjector = new WeatherServiceInjectorImpl();
-        JsonDataMapperInjector jsonDataMapperInjector = new JsonDataMapperInjectorImpl();
-        WeatherServiceConsumer consumer = new WeatherServiceConsumer(
-                weatherServiceInjector.getWeatherService("Detroit", "your token",
-                        jsonDataMapperInjector.getJsonDataMapperService()));
+    public static void main(String[] args)  {
+        WeatherServiceConsumer consumer = new WeatherServiceConsumer(WeatherServiceImpl
+                .getNewServiceInstance("Detroit","4e7ed5953d55b45bcfd4db029370afaf"));
         consumer.getWeatherByCityName();
     }
 }
