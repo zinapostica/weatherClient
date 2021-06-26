@@ -12,6 +12,7 @@ import java.net.http.HttpResponse;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class WeatherServiceImpl implements WeatherService {
     private static final String WEATHER_API_URL = "http://api.openweathermap.org/data/2.5/weather";
     private static final String units = "metric";
@@ -20,7 +21,7 @@ public class WeatherServiceImpl implements WeatherService {
     private JsonDataMapperService mapper;
 
 
-    public WeatherData getCityWeather() throws IOException, InterruptedException {
+    public WeatherData getCityWeather() throws IOException, InterruptedException, IllegalArgumentException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
@@ -39,15 +40,5 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
 
-    private WeatherServiceImpl(String name, String token, JsonDataMapperService mapper) {
-        this.name = name;
-        this.token = token;
-        this.mapper = mapper;
-    }
-
-    public static WeatherService getNewServiceInstance(String city, String token){
-        JsonDataMapperService jsonDataMapperService=new JsonDataMapperServiceImpl();
-        return new WeatherServiceImpl(city,token,jsonDataMapperService);
-    }
 
 }
