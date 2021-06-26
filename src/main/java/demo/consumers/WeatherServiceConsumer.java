@@ -23,7 +23,7 @@ public class WeatherServiceConsumer {
             WeatherData weatherData = weatherService.getCityWeather();
             if (weatherData != null)
                 System.out.println(weatherData);
-        }catch (IOException| InterruptedException e){
+        }catch (IOException| InterruptedException | IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
     }
